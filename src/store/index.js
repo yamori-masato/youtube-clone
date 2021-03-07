@@ -19,7 +19,7 @@ export const Store = createContext({
 })
 
 export const StoreProvider = ({ children }) => {
-  const { globalState, setGlobalState } = useReducer(reducer, initialState)
+  const [ globalState, setGlobalState ] = useReducer(reducer, initialState)
   return (
     <Store.Provider value={{ globalState, setGlobalState }}>
       {children}
