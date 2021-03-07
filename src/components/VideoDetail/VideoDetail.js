@@ -2,6 +2,9 @@ import React, { useEffect, useContext } from 'react'
 import { useLocation } from 'react-router-dom'
 import { fetchSelectedData } from '../../apis'
 import { Store } from '../../store'
+import VideoPlay from '../VideoPlay/VideoPlay'
+import Style from './VideoDetail.module.scss'
+import Linkify from 'react-linkify'
 
 const VideoDetail = () => {
   const { globalState, setGlobalState } = useContext(Store)
@@ -22,10 +25,17 @@ const VideoDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return (
-    <div>
-      
+  return globalState.selected && globalState.selected.id ? (
+    <div className={Style.wrap}>
+      <VideoPlay id={globalState.selected.id} />
+      <p>{globalState.selected.snippet.title}</p>
+      <hr />
+      <Linkify>
+        <pre>{globalState.selected.snippet.description}</pre>
+      </Linkify>
     </div>
+  ) : (
+    <span>no data</span>
   )
 }
 
