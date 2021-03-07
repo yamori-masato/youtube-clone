@@ -10,7 +10,7 @@ const SideList = () => {
     <div className={Style.sidenav}>
       {
         globalState.related ? globalState.related.map(video => {
-          return (
+          return video.id && video.snippet && (
             <SideListItem
               id={video.id.videoId}
               key={video.id.videoId}
