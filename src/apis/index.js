@@ -10,7 +10,7 @@ export const fetchPopularData = async () => {
   return await youtube.get('/videos', {
     params: {
       part: 'snippet',
-      maxResult: 40,
+      maxResults: 40,
       key: API_KEY,
       regionCode: 'JP',
       type: 'video',
